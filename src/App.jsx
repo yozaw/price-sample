@@ -12,27 +12,10 @@ import "./styles.css";
 
 export const App = () => {
   const priceDescriptions = [
-    <li>
-      Access ArcGIS Platform location services with your free developer
-      subscription.
-    </li>,
-    <li>
-      Estimate your costs for location services with the pricing calculator.
-    </li>,
-    <li>
-      Free tiers of basemaps, geocodes, and other services are included in
-      estimated cost.
-    </li>,
-    <li>
-      <a
-        href="https://www.esri.com/en-us/contact"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Contact us for high volume pricing
-      </a>
-      .
-    </li>
+    "Access ArcGIS Platform location services with your free developer subscription.",
+    "Estimate your costs for location services with the pricing calculator.",
+    "Free tiers of basemaps, geocodes, and other services are included in estimated cost.",
+    "<a href='https://www.esri.com/en-us/contact' target='_blank' rel='noopener noreferrer'>Contact us for high volume pricing</a>."
   ];
 
   const mainFeatureLists = [
@@ -45,75 +28,12 @@ export const App = () => {
   ];
 
   const mainFeatureDescriptions = [
-    <>
-      Add location to your application with{" "}
-      <a
-        href="https://developers.arcgis.com/features/maps-and-data/"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        basemap layers
-      </a>
-      , such as streets, satellite imagery, and others. Usage is billed per tile
-      request.
-    </>,
-    <>
-      <a
-        href="https://developers.arcgis.com/features/geocoding/"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Search and find
-      </a>{" "}
-      addresses, businesses, and points of interest around the world.
-    </>,
-    <>
-      Find the quickest or shortest route based on time and distance, generate
-      turn-by-turn directions, and perform intelligent network analysis with
-      ready-to-use{" "}
-      <a
-        href="https://developers.arcgis.com/features/directions/"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        routing and directions services
-      </a>
-      .
-    </>,
-    <>
-      <a
-        href="https://developers.arcgis.com/features/demographics/"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Get facts
-      </a>{" "}
-      about the people, places, and businesses in a specific location. Join your
-      existing datasets with Esri's extensive portfolio of global location data
-      that is easily accessible for data enrichment.
-    </>,
-    <>
-      Publish tiles from your{" "}
-      <a
-        href="https://developers.arcgis.com/features/hosted-data/"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        hosted feature layers
-      </a>
-      .
-    </>,
-    <>
-      Securely{" "}
-      <a
-        href="https://developers.arcgis.com/features/hosted-data/"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        store and host your data
-      </a>{" "}
-      in the cloud.
-    </>
+    "Add location to your application with <a href='https://developers.arcgis.com/features/maps-and-data/' target='_blank' rel='noopener noreferrer'>basemap layers</a>, such as streets, satellite imagery, and others. Usage is billed per tile request.",
+    "<a href='https://developers.arcgis.com/features/geocoding/' target='_blank' rel='noopener noreferrer'>Search and find</a> addresses, businesses, and points of interest around the world.",
+    "Find the quickest or shortest route based on time and distance, generate turn-by-turn directions, and perform intelligent network analysis with ready-to-use <a href='https://developers.arcgis.com/features/directions/' target='_blank' rel='noopener noreferrer'> routing and directions services</a>.",
+    "<a href='https://developers.arcgis.com/features/demographics/' target='_blank' rel='noopener noreferrer'>Get facts</a> about the people, places, and businesses in a specific location. Join your existing datasets with Esri's extensive portfolio of global location data that is easily accessible for data enrichment.",
+    "Publish tiles from your <a href='https://developers.arcgis.com/features/hosted-data/' target='_blank' rel='noopener noreferrer'>hosted feature layers</a>.",
+    "Securely <a href='https://developers.arcgis.com/features/hosted-data/' target='_blank' rel='noopener noreferrer'>store and host your data</a>in the cloud."
   ];
 
   const subFeatureLists = [
@@ -232,14 +152,14 @@ export const App = () => {
     if (subFeatureTotalPrice === 0) {
       return "Not Selected";
     } else {
-      return subFeatureTotalPrice + " total approx";
+      return `$ ${subFeatureTotalPrice} total approx`;
     }
   };
 
   const featureTotalPrice = () => {
     const subFeatureData = subFeatureValues;
     let featureTotalPrice = 0;
-    for (var i in subFeatureData) {
+    for (const i in subFeatureData) {
       const subFeatureTodalPrice = subFeatureData[i].reduce(function (a, x) {
         return a + x;
       }, 0);
@@ -260,9 +180,9 @@ export const App = () => {
         <Grid container spacing={3} alignItems="center">
           <Grid item xs={12} sm={8}>
             <ul>
-              {priceDescriptions.map((priceDescription) => {
-                return priceDescription;
-              })}
+              {priceDescriptions.map((priceDescription) => (
+                <li dangerouslySetInnerHTML={{ __html: priceDescription }} />
+              ))}
             </ul>
           </Grid>
           <Grid item xs={12} sm={3} className="total-price">
@@ -304,7 +224,11 @@ export const App = () => {
                     sm={9}
                     className="main-feature-description"
                   >
-                    {mainFeatureDescriptions[mainFeatureIndex]}
+                    <Typography
+                      dangerouslySetInnerHTML={{
+                        __html: mainFeatureDescriptions[mainFeatureIndex]
+                      }}
+                    />
                   </Grid>
                 </Grid>
               </AccordionSummary>
