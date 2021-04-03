@@ -9,6 +9,7 @@ import AccordionDetails from "@material-ui/core/AccordionDetails";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
 import "./styles.css";
+import { AddAPhoto } from "@material-ui/icons";
 
 export const App = () => {
   const priceDescriptions = [
@@ -102,13 +103,40 @@ export const App = () => {
     [0, 0]
   ]);
 
-  const subFeatureRates = [
-    [0],
+  const subFeatureMaxValues = [
+    [15000000],
+    [4000000, 1000000],
+    [4000000, 1000000, 4000000, 999999, 999999, 999999, 4000000],
+    [999999, 1000],
+    [999999],
+    [100, 1000000]
+  ];
+
+  const subFeatureStepValues = [
+    [1000],
+    [1000, 1000],
+    [1000, 1000, 1000, 1000, 1000, 1000, 1000],
+    [1000, 10],
+    [1000],
+    [5, 10]
+  ];
+
+  const subFeaturePrices = [
+    [0.00015],
+    [0.0005, 0.004],
+    [0.0005, 0.05, 0.05, 0.1, 0.05, 0.01, 0.00005],
+    [0.001, 1],
+    [0.0001],
+    [0.12, 0.024]
+  ];
+
+  const subFeatureFreeValues = [
+    [2000000],
+    [20000, 0],
+    [20000, 0, 5000, 0, 0, 0, 0],
     [0, 0],
-    [0, 0, 0, 0, 0, 0, 0],
-    [0, 0],
     [0],
-    [0, 0]
+    [5, 100]
   ];
 
   const [rateText, setRateText] = useState("100");
@@ -136,20 +164,32 @@ export const App = () => {
   };
 
   const handleBlur = (event, subFeatureIndex, mainFeatureIndex) => {
-    //ここは上限値が異なるので書き換える
     if (event.target.value < 0) {
       setSubFeatureValues(0);
-    } else if (event.target.value > 100) {
-      setSubFeatureValues(100);
+    } else if (event.target.value > subFeatureMaxValues[mainFeatureIndex][subFeatureIndex]) {
+      setSubFeatureValues(subFeatureMaxValues[mainFeatureIndex][subFeatureIndex]);
     }
   };
 
   const subFeatureTotalPrice = (mainFeatureIndex) => {
+    let freeFlag = false;
     const subFeatureData = subFeatureValues[mainFeatureIndex];
-    const subFeatureTotalPrice = subFeatureData.reduce(function (a, x) {
-      return a + x;
-    }, 0);
-    if (subFeatureTotalPrice === 0) {
+    let subFeatureTotalPrice = 0;
+    for (const i in subFeatureData) {
+      const freeValues = subFeatureFreeValues[mainFeatureIndex][i];
+      if (subFeatureData[i] >= freeValues) {
+        subFeatureTotalPrice = subFeatureTotalPrice + subFeatureData[i] * subFeaturePrices[mainFeatureIndex][i]
+      } 
+      if (subFeatureData[i] > 0) {
+        freeFlag = true;
+      }
+    }
+
+    // "Not Selected";
+
+    if (subFeatureTotalPrice === 0 && freeFlag) {
+      return "Free";
+    } else if (subFeatureTotalPrice === 0 && !freeFlag) {
       return "Not Selected";
     } else {
       return `$ ${subFeatureTotalPrice} total approx`;
@@ -157,15 +197,14 @@ export const App = () => {
   };
 
   const featureTotalPrice = () => {
-    const subFeatureData = subFeatureValues;
-    let featureTotalPrice = 0;
-    for (const i in subFeatureData) {
-      const subFeatureTodalPrice = subFeatureData[i].reduce(function (a, x) {
-        return a + x;
-      }, 0);
-      featureTotalPrice = featureTotalPrice + subFeatureTodalPrice;
-    }
 
+   let featureTotalPrice = 0;
+   for (const i in subFeatureValues) {
+    for (const s in subFeatureValues[i]) {
+      
+      featureTotalPrice = featureTotalPrice + subFeatureValues[i][s] * subFeaturePrices[i][s]
+    }
+   }
     return featureTotalPrice;
   };
 
@@ -186,7 +225,7 @@ export const App = () => {
             </ul>
           </Grid>
           <Grid item xs={12} sm={3} className="total-price">
-            Rete: $1= \
+            Rete: $1= &yen;
             <input
               className="rate-input"
               placeholder="Rate"
@@ -194,7 +233,7 @@ export const App = () => {
               onChange={onCangeRateText}
             />{" "}
             <br />$ {featureTotalPrice()} / month
-            <br />\ {featureTotalPriceJp()} / month
+            <br />&yen; {featureTotalPriceJp()} / month
           </Grid>
         </Grid>
       </div>
@@ -243,6 +282,16 @@ export const App = () => {
                           </Grid>
                           <Grid item xs={12} sm={9}>
                             <Slider
+                              max={
+                                subFeatureMaxValues[mainFeatureIndex][
+                                  subFeatureIndex
+                                ]
+                              }
+                              step={
+                                subFeatureStepValues[mainFeatureIndex][
+                                  subFeatureIndex
+                                ]
+                              }
                               value={subFeature}
                               onChange={(event, subFeatureValue) =>
                                 handleSliderChange(
@@ -273,9 +322,15 @@ export const App = () => {
                                 )
                               }
                               inputProps={{
-                                step: 1,
+                                step:
+                                  subFeatureStepValues[mainFeatureIndex][
+                                    subFeatureIndex
+                                  ],
                                 min: 0,
-                                max: 100,
+                                max:
+                                  subFeatureMaxValues[mainFeatureIndex][
+                                    subFeatureIndex
+                                  ],
                                 type: "number",
                                 "aria-labelledby": "input-slider"
                               }}
