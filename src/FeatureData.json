@@ -1,0 +1,175 @@
+{
+  "mainFeature": [
+    {
+      "title": "Basemap layers",
+      "descriptions": "Add location to your application with <a href='https://developers.arcgis.com/features/maps-and-data/' target='_blank' rel='noopener noreferrer'>basemap layers</a>, such as streets, satellite imagery, and others. Usage is billed per tile request.",
+      "subFeature": [
+        {
+          "title": "Basemaps",
+          "unit": "Tile",
+          "priceDescriptions": "2,000,000 free then $0.15 per 1,000 Tiles",
+          "maxValue": 15000000,
+          "freeValue": 20000,
+          "featurePrice": 0.00015,
+          "stepValue": 1000
+        }
+      ]
+    },
+    {
+      "title": "Geocode and search",
+      "descriptions": "<a href='https://developers.arcgis.com/features/geocoding/' target='_blank' rel='noopener noreferrer'>Search and find</a> addresses, businesses, and points of interest around the world.",
+      "subFeature": [
+        {
+          "title": "Geocode (non-stored)",
+          "unit": "Geocode",
+          "priceDescriptions": "20,000 free then $0.5 per 1,000 Geocodes",
+          "maxValue": 4000000,
+          "freeValue": 20000,
+          "featurePrice": 0.0005,
+          "stepValue": 1000
+        },
+        {
+          "title": "Geocode",
+          "unit": "Geocode",
+          "priceDescriptions": "0 free then $4 per 1,000 Geocodes",
+          "maxValue": 1000000,
+          "freeValue": 0,
+          "featurePrice": 0.004,
+          "stepValue": 1000
+        }
+      ]
+    },
+    {
+      "title": "Route and directions",
+      "descriptions": "Find the quickest or shortest route based on time and distance, generate turn-by-turn directions, and perform intelligent network analysis with ready-to-use <a href='https://developers.arcgis.com/features/directions/' target='_blank' rel='noopener noreferrer'> routing and directions services</a>.",
+      "subFeature": [
+        {
+          "title": "Simple Routes",
+          "unit": "Route",
+          "priceDescriptions": "20,000 free then $0.5 per 1,000 Routes",
+          "maxValue": 4000000,
+          "freeValue": 20000,
+          "featurePrice": 0.0005,
+          "stepValue": 1000
+        },
+        {
+          "title": "Optimized Routes",
+          "unit": "Route",
+          "priceDescriptions": "0 free then $50 per 1,000 Routes",
+          "maxValue": 1000000,
+          "freeValue": 0,
+          "featurePrice": 0.05,
+          "stepValue": 1000
+        },
+        {
+          "title": "Drive Time (service area)",
+          "unit": "Service Area",
+          "priceDescriptions": "5,000 free then $50 per 1,000 Service Areas",
+          "maxValue": 4000000,
+          "freeValue": 5000,
+          "featurePrice": 0.05,
+          "stepValue": 1000
+        },
+        {
+          "title": "Multi-Vehicle Routes",
+          "unit": "Route",
+          "priceDescriptions": "0 free then $100 per 1,000 Routes",
+          "maxValue": 999999,
+          "freeValue": 0,
+          "featurePrice": 0.1,
+          "stepValue": 1000
+        },
+        {
+          "title": "Closest Facilities",
+          "unit": "Route",
+          "priceDescriptions": "0 free then $50 per 1,000 Routes",
+          "maxValue": 999999,
+          "freeValue": 0,
+          "featurePrice": 0.05,
+          "stepValue": 1000
+        },
+        {
+          "title": "Location Allocation",
+          "unit": "Demand Point",
+          "priceDescriptions": "0 free then $10 per 1,000 allocated Demand Points",
+          "maxValue": 999999,
+          "freeValue": 0,
+          "featurePrice": 0.01,
+          "stepValue": 1000
+        },
+        {
+          "title": "OD Matrix",
+          "unit": "Origin Destination Pair",
+          "priceDescriptions": "0 free then $0.05 per 1,000 input Origin Destination Pairs",
+          "maxValue": 4000000,
+          "freeValue": 0,
+          "featurePrice": 0.00005,
+          "stepValue": 1000
+        }
+      ]
+    },
+    {
+      "title": "Demographic data",
+      "descriptions": "<a href='https://developers.arcgis.com/features/demographics/' target='_blank' rel='noopener noreferrer'>Get facts</a> about the people, places, and businesses in a specific location. Join your existing datasets with Esri's extensive portfolio of global location data that is easily accessible for data enrichment.",
+      "subFeature": [
+        {
+          "title": "Geographic Data Enrichment (enrich)",
+          "unit": "Variable",
+          "priceDescriptions": "0 free then $1 per 1,000 Variables",
+          "maxValue": 999999,
+          "freeValue": 0,
+          "featurePrice": 0.001,
+          "stepValue": 1000
+        },
+        {
+          "title": "Demographic Reports (export)",
+          "unit": "Export",
+          "priceDescriptions": "0 free then $1 each",
+          "maxValue": 1000,
+          "freeValue": 0,
+          "featurePrice": 1,
+          "stepValue": 10
+        }
+      ]
+    },
+    {
+      "title": "Tile generation",
+      "descriptions": "Publish tiles from your <a href='https://developers.arcgis.com/features/hosted-data/' target='_blank' rel='noopener noreferrer'>hosted feature layers</a>.",
+      "subFeature": [
+        {
+          "title": "Map Tile Generation",
+          "unit": "Tile",
+          "priceDescriptions": "0 free then $0.1 per 1,000 Tiles",
+          "maxValue": 999999,
+          "freeValue": 0,
+          "featurePrice": 0.0001,
+          "stepValue": 1000
+        }
+      ]
+    },
+    {
+      "title": "Storage",
+      "descriptions": "Securely <a href='https://developers.arcgis.com/features/hosted-data/' target='_blank' rel='noopener noreferrer'>store and host your data</a>in the cloud.",
+      "subFeature": [
+        {
+          "title": "Tile and Data Storage (map tiles, feature attachments, scene layer packages, and documents)",
+          "unit": "GB",
+          "priceDescriptions": "5 free then $0.12 per GB",
+          "maxValue": 100,
+          "freeValue": 5,
+          "featurePrice": 0.12,
+          "stepValue": 5
+        },
+        {
+          "title": "Feature Service Storage (import and create, excludes feature attachments)",
+          "unit": "MB",
+          "priceDescriptions": "100 free then $2.40 per 100 MBs",
+          "maxValue": 1000000,
+          "freeValue": 100,
+          "featurePrice": 0.024,
+          "stepValue": 10
+        }
+      ]
+    }
+  ]
+}
