@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./styles.css";
+import { Helmet } from "react-helmet";
 
 import Grid from "@material-ui/core/Grid";
 import FeatureData from "./FeatureData.json";
@@ -13,7 +14,7 @@ export const App = () => {
     "<a href='https://www.esri.com/en-us/contact' target='_blank' rel='noopener noreferrer'>Contact us for high volume pricing</a>."
   ];
 
-  const [rate, setRate] = useState("100");
+  const [rate, setRate] = useState("100.00");
   const onCangeRate = (event) => setRate(event.target.value);
 
   const [subFeatureValues, setSubFeatureValues] = useState([
@@ -26,22 +27,13 @@ export const App = () => {
   ]);
 
   const featureValueChange = (
-    type,
     subFeatureValue,
     mainFeatureIndex,
     subFeatureIndex
   ) => {
     setSubFeatureValues((previousState) => {
       const newSubFeatureValues = [...previousState];
-      if (type === "slider") {
-        newSubFeatureValues[mainFeatureIndex][
-          subFeatureIndex
-        ] = subFeatureValue;
-      } else if (type === "input") {
-        newSubFeatureValues[mainFeatureIndex][
-          subFeatureIndex
-        ] = subFeatureValue;
-      }
+      newSubFeatureValues[mainFeatureIndex][subFeatureIndex] = subFeatureValue;
       return newSubFeatureValues;
     });
   };
@@ -114,23 +106,30 @@ export const App = () => {
   const featureTotalPriceJp = () => rate * featureTotalPrice();
 
   return (
-    <>
+    <div className="top">
+      <Helmet>
+        <title>Pricing</title>
+      </Helmet>
       <div className="main-area">
         <p className="main-title">Location services pricing</p>
         <Grid container spacing={3} alignItems="center">
-          <Grid item xs={12} sm={8}>
+          <Grid item xs={12} sm={7}>
             <ul>
-              {mainDescriptions.map((priceDescription) => (
-                <li dangerouslySetInnerHTML={{ __html: priceDescription }} />
+              {mainDescriptions.map((priceDescription, index) => (
+                <li
+                  key={index}
+                  dangerouslySetInnerHTML={{ __html: priceDescription }}
+                />
               ))}
             </ul>
           </Grid>
-          <Grid item xs={12} sm={3} className="total-price">
+          <Grid item xs={12} sm={5} className="total-price">
             Rete: $1= &yen;
             <input
               className="rate-input"
               placeholder="Rate"
               type="number"
+              step="0.01"
               value={rate}
               onChange={onCangeRate}
             />{" "}
@@ -149,6 +148,6 @@ export const App = () => {
           valueBlur={featureValueBlur}
         />
       </div>
-    </>
+    </div>
   );
 };

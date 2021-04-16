@@ -6,23 +6,39 @@ body {
   font-family: sans-serif;
 }
 
+.top {
+  padding: 30px;
+  background-image: url("https://www.esri.com/content/dam/esrisites/en-us/arcgis/location-services/overview/assets/arcgis-platform-large-banner-fg.jpg");
+}
+
 .main-area {
   background-color: white;
-  width: "100%";
-  min-height: 350px;
-  padding: 8px;
-  margin: 8px;
+  min-height: 300px;
+  width: 100%;
+  max-width: 1400px;
+  padding: 30px;
   border-radius: 3px;
-  border: 1px solid;
   border-color: #dddddd;
+  box-shadow: 0px 0px 10px;
+  border: 1px solid rgb(240, 234, 234);
+  margin: 0 auto;
+  position: relative;
+  top: 20px;
 }
 
 .service-area {
   background-color: white;
-  width: "100%";
   min-height: 200px;
-  padding: 8px;
-  margin: 8px;
+  width: 100%;
+  max-width: 1400px;
+  padding: 30px;
+  border-radius: 3px;
+  box-shadow: 0px 0px 10px;
+  border: 1px solid rgb(240, 234, 234);
+  margin: 0 auto;
+  position: relative;
+  top: 50px;
+  margin-bottom: 100px;
 }
 
 .main-title {
@@ -34,7 +50,7 @@ body {
   border-radius: 1px;
   border-color: #eeeeee;
   height: 25px;
-  width: 70px;
+  width: 120px;
   font-size: 30px;
   padding: 6px 16px;
   margin: 10px;
