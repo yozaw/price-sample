@@ -32,7 +32,7 @@ export const SubFeatures = (props) => {
                 spacing={3}
                 alignItems="center"
               >
-                <Grid key={"grid1" + mainFeatureIndex} item xs={12} sm={3}>
+                <Grid key={"grid1" + mainFeatureIndex} item xs={12} sm={6}>
                   <Typography key={mainFeatureIndex} className="main-feature">
                     {mainFeature.title}
                   </Typography>
@@ -41,13 +41,13 @@ export const SubFeatures = (props) => {
                   key={"grid2" + mainFeatureIndex}
                   item
                   xs={12}
-                  sm={7}
+                  sm={3}
                 ></Grid>
                 <Grid
                   key={"grid3" + mainFeatureIndex}
                   item
                   xs={12}
-                  sm={2}
+                  sm={3}
                   className="sub-feature-price"
                 >
                   {subFeatureTotalPrice(mainFeatureIndex)}

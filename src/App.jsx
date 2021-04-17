@@ -106,7 +106,7 @@ export const App = () => {
   const featureTotalPriceJp = () => rate * featureTotalPrice();
 
   return (
-    <div className="top">
+    <>
       <Helmet>
         <title>Pricing</title>
       </Helmet>
@@ -148,6 +148,6 @@ export const App = () => {
           valueBlur={featureValueBlur}
         />
       </div>
-    </div>
+    </>
   );
 };
